@@ -2,9 +2,9 @@ import { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
+import Socials from "../../components/Socials"; // 👈 import socials
 
 const Contact = () => {
-  // ✅ Initialize state with new fields
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -22,71 +22,80 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Validate Phone Number (Only Numbers Allowed)
   const handlePhoneChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    const value = e.target.value.replace(/\D/g, "");
     setFormData({ ...formData, phone: value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  setSuccess("");
-  setError("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess("");
+    setError("");
 
-  const web3FormData = new FormData();
-  web3FormData.append("access_key", "2ca99f30-48c0-4f12-bd67-3e40d558864f"); // Replace with your Web3Forms key
-  web3FormData.append("from_name", "Alvin's Portfolio"); 
-  web3FormData.append("subject", `New Contact Request from ${formData.firstName} ${formData.lastName}`);
-  web3FormData.append("message", `
-    Name: ${formData.firstName} ${formData.lastName}
-    Email: ${formData.email}
-    Phone: ${formData.phone}
-    Subject: ${formData.subject}
-    Message: ${formData.message}
-  `);
+    const web3FormData = new FormData();
+    web3FormData.append("access_key", "2ca99f30-48c0-4f12-bd67-3e40d558864f");
+    web3FormData.append("from_name", "Alvin's Portfolio");
+    web3FormData.append(
+      "subject",
+      `New Contact Request from ${formData.firstName} ${formData.lastName}`
+    );
+    web3FormData.append(
+      "message",
+      `
+      Name: ${formData.firstName} ${formData.lastName}
+      Email: ${formData.email}
+      Phone: ${formData.phone}
+      Subject: ${formData.subject}
+      Message: ${formData.message}
+    `
+    );
 
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: web3FormData
-    });
-
-    if (response.ok) {
-      setSuccess("✅ Message sent successfully!");
-
-      // ✅ Correct way to reset the form fields
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: web3FormData
       });
 
-      // ✅ Also reset input fields by targeting their values directly
-      document.querySelectorAll("input, textarea").forEach(field => field.value = "");
-    } else {
-      setError("❌ Error sending message. Please try again.");
+      if (response.ok) {
+        setSuccess("✅ Message sent successfully!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: ""
+        });
+        document.querySelectorAll("input, textarea").forEach(
+          (field) => (field.value = "")
+        );
+      } else {
+        setError("❌ Error sending message. Please try again.");
+      }
+    } catch (error) {
+      setError("⚠️ Network error. Please check your connection.");
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    setError("⚠️ Network error. Please check your connection.");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+    <div className="h-full bg-primary">
+      <div className="container mx-auto py-20 md:py-28 xl:py-32 text-center xl:text-left flex items-center justify-center h-full px-4">
         <div className="flex flex-col w-full max-w-[700px]">
+          
+          {/* socials directly under logo, before heading */}
+          <div className="flex justify-center mb-10">
+            {/* <Socials className="flex gap-x-6 text-xl sm:text-2xl" /> */}
+          </div>
+
           <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-center mb-12"
           >
             Let's <span className="text-accent">Connect.</span>
           </motion.h2>
@@ -100,7 +109,7 @@ const handleSubmit = async (e) => {
             className="flex-1 flex flex-col gap-6 w-full mx-auto"
           >
             {/* Name Fields */}
-            <div className="flex gap-x-6 w-full">
+            <div className="flex flex-col sm:flex-row gap-6 w-full">
               <input
                 type="text"
                 name="firstName"
@@ -120,7 +129,7 @@ const handleSubmit = async (e) => {
             </div>
 
             {/* Phone & Email Fields */}
-            <div className="flex gap-x-6 w-full">
+            <div className="flex flex-col sm:flex-row gap-6 w-full">
               <input
                 type="email"
                 name="email"
@@ -139,7 +148,7 @@ const handleSubmit = async (e) => {
               />
             </div>
 
-            {/* Subject & Message Fields */}
+            {/* Subject & Message */}
             <input
               type="text"
               name="subject"
@@ -157,18 +166,23 @@ const handleSubmit = async (e) => {
               required
             ></textarea>
 
-            {/* Submit Button with Loading Animation */}
-            <button type="submit" className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group">
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+            >
               {loading ? (
                 <span className="animate-spin border-t-2 border-white rounded-full w-5 h-5"></span>
               ) : (
-                <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">Let's talk</span>
+                <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
+                  Let's talk
+                </span>
               )}
               <BsArrowRight className="absolute text-[22px] -translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300" />
             </button>
           </motion.form>
 
-          {/* Success & Error Notifications */}
+          {/* Success & Error */}
           {success && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -190,7 +204,6 @@ const handleSubmit = async (e) => {
               {error}
             </motion.div>
           )}
-
         </div>
       </div>
     </div>
