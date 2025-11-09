@@ -18,7 +18,7 @@ import {
   SiCanva,
 } from "react-icons/si";
 
-//  data
+// data
 const aboutData = [
   {
     title: 'skills',
@@ -109,8 +109,9 @@ import CountUp from 'react-countup';
 const About = () => {
   const [index, setIndex] = useState(0);
   console.log(index);
+
   return (
-    <div className='h-full bg-primary py-32 text-center xl:text-left'>
+    <div className='min-h-screen bg-primary py-32 text-center xl:text-left overflow-y-auto'>
       <Circles />
       {/* avatar img */}
       <motion.div
@@ -122,6 +123,7 @@ const About = () => {
       >
         <Avatar />
       </motion.div>
+
       <div className='container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6'>
         {/* text */}
         <div className='flex-1 flex flex-col justify-center'>
@@ -143,6 +145,7 @@ const About = () => {
           >
             My journey into tech has been shaped by a love for design, problem-solving, and pushing boundaries. From refining intuitive UI elements to solving complex code challenges, I thrive in blending logic with artistry. Every project is an opportunity to craft something functional, polished, and meaningful-one line of code at a time.
           </motion.p>
+
           {/* counters */}
           <div className=''>
             <div className='flex flex-1 xl:gap-x-6'>
@@ -188,6 +191,7 @@ const About = () => {
             </div>
           </div>
         </div>
+
         {/* info */}
         <motion.div
           variants={fadeIn('right', 0.4)}

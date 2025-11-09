@@ -4,13 +4,12 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-
-    // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}', // If using src directory
   ],
   theme: {
     container: {
       padding: {
+        center: true,
         DEFAULT: '15px',
       },
     },
@@ -36,14 +35,9 @@ module.exports = {
         'spin-slow': 'spin 6s linear infinite',
       },
       fontFamily: {
-        poppins: [`var(--font-poppins)`, 'sans-serif'],
-        sora: [`var(--font-sora)`, 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
+        sora: ['var(--font-sora)', 'sans-serif'],
       },
-    },
-  },
-  container: {
-    padding: {
-      DEFAULT: '15px',
     },
   },
   plugins: [require('tailwind-scrollbar')],
