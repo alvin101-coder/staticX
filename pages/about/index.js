@@ -128,23 +128,38 @@ const About = () => {
         {/* text */}
         <div className='flex-1 flex flex-col justify-center'>
           <motion.h2
-            variants={fadeIn('right', 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className='h2'
-          >
-            <span className='text-accent'>Transforming ideas </span> into seamless digital experiences
-          </motion.h2>
-          <motion.p
-            variants={fadeIn('right', 0.4)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'
-          >
-            My journey into tech has been shaped by a love for design, problem-solving, and pushing boundaries. From refining intuitive UI elements to solving complex code challenges, I thrive in blending logic with artistry. Every project is an opportunity to craft something functional, polished, and meaningful-one line of code at a time.
-          </motion.p>
+  variants={fadeIn('right', 0.2)}
+  initial="hidden"
+  animate="show"
+  exit="hidden"
+  className='h2'
+>
+  <span className='text-accent'>From Vision </span> to Digital Reality
+</motion.h2>
+
+<motion.p
+  variants={fadeIn('right', 0.4)}
+  initial="hidden"
+  animate="show"
+  exit="hidden"
+  className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-8 px-2 xl:px-0'
+>
+  My journey in tech is fueled by a passion for design, problem‑solving, and innovation. 
+  I thrive at the intersection of logic and artistry—refining intuitive interfaces, 
+  tackling complex code challenges, and shaping experiences that are both functional 
+  and inspiring. Every project is a chance to create something meaningful, one line of code at a time.
+</motion.p>
+
+<motion.p
+  variants={fadeIn('right', 0.45)}
+  initial="hidden"
+  animate="show"
+  exit="hidden"
+  className='text-xs sm:text-sm md:text-base text-accent font-medium tracking-wide mt-2 mb-10 xl:mb-12'
+>
+  Blending creativity and code to craft experiences that leave a lasting impact.
+</motion.p>
+
 
           {/* counters */}
           <div className=''>

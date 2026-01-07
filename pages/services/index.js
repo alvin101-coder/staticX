@@ -10,7 +10,7 @@ import { fadeIn } from "../../variants";
 
 const Services = () => {
   return (
-    <div className="h-full bg-primary py-20 md:py-28 xl:py-36 flex flex-col items-center">
+    <div className="min-h-screen bg-primary py-20 md:py-28 xl:py-36 flex flex-col items-center">
       <Circles />
 
       {/* socials placed between logo & services */}
@@ -29,8 +29,9 @@ const Services = () => {
               exit="hidden"
               className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mb-4"
             >
-              My services <span className="text-accent">.</span>
+              Services that <span className="text-accent">Deliver Impact</span>
             </motion.h2>
+
             <motion.p
               variants={fadeIn("up", 0.6)}
               initial="hidden"
@@ -38,14 +39,21 @@ const Services = () => {
               exit="hidden"
               className="text-sm sm:text-base leading-relaxed mb-6 max-w-[500px] mx-auto lg:mx-0"
             >
-              I build solutions that merge functionality with intuitive design.
-              Whether it's crafting dynamic UI components, troubleshooting
-              complex layouts, or optimizing code for efficiency, every project
-              is an opportunity to refine and innovate. My work isn't just about
-              writing code, it's about creating seamless, engaging digital
-              experiences that solve real-world problems. Through clean styling,
-              logical structuring, and interactive elements, I bring precision
-              and creativity to modern web development.
+              I design and develop solutions that blend functionality with creativity. 
+              From building dynamic user interfaces to optimizing performance and solving complex challenges, 
+              every project is an opportunity to craft digital experiences that are seamless, engaging, and effective. 
+              My focus is not just on writing code, but on creating products that solve real problems and leave a lasting impression.
+            </motion.p>
+
+            {/* short subline */}
+            <motion.p
+              variants={fadeIn("up", 0.7)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="text-xs sm:text-sm md:text-base text-accent font-medium tracking-wide mt-2 mb-8"
+            >
+              Turning bold ideas into polished digital solutions.
             </motion.p>
           </div>
 

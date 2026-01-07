@@ -58,7 +58,7 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setSuccess("✅ Message sent successfully!");
+        setSuccess(" Thanks for reaching out! I’ll get back to you as soon as possible.");
         setFormData({
           firstName: "",
           lastName: "",
@@ -71,10 +71,10 @@ const Contact = () => {
           (field) => (field.value = "")
         );
       } else {
-        setError("❌ Error sending message. Please try again.");
+        setError("❌ Something went wrong while sending your message. Please try again in a moment.");
       }
     } catch (error) {
-      setError("⚠️ Network error. Please check your connection.");
+      setError("⚠️ Network issue detected. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -95,10 +95,21 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-center mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-center mb-4"
           >
-            Let's <span className="text-accent">Connect.</span>
+            Let’s <span className="text-accent">Connect.</span>
           </motion.h2>
+
+          {/* tagline */}
+          <motion.p
+            variants={fadeIn("up", 0.3)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="text-sm sm:text-base text-white/70 max-w-[500px] mx-auto mb-12"
+          >
+            I’d love to hear about your project and explore how we can bring it to life together.
+          </motion.p>
 
           <motion.form
             onSubmit={handleSubmit}
@@ -169,13 +180,13 @@ const Contact = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group relative"
             >
               {loading ? (
                 <span className="animate-spin border-t-2 border-white rounded-full w-5 h-5"></span>
               ) : (
                 <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                  Let's talk
+                  Let’s talk
                 </span>
               )}
               <BsArrowRight className="absolute text-[22px] -translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300" />

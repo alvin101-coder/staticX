@@ -4,48 +4,56 @@ export const workSlides = {
     {
       images: [
         {
-          title: 'Portfolio Website',
+          title: 'Personal Portfolio',
           path: '/thumb1.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          url: 'https://yourportfolio.vercel.app/',
+          description: 'A modern portfolio showcasing design and development skills with interactive UI elements.',
         },
         {
-          title: 'Jirani Rides',
+          title: 'Jirani Rides Platform',
           path: '/thumb2.jpg',
           url: 'https://jirani-rides.vercel.app/',
+          description: 'Ride‑sharing web app built with Next.js, offering seamless booking and real‑time tracking.',
         },
         {
-          title: 'Blog Platform',
+          title: 'Blog & Content Hub',
           path: '/thumb3.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          url: 'https://yourblog.vercel.app/',
+          description: 'A scalable blogging platform with clean layouts, optimized for readability and SEO.',
         },
         {
-          title: 'Dashboard App',
+          title: 'Analytics Dashboard',
           path: '/thumb4.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          url: 'https://yourdashboard.vercel.app/',
+          description: 'Interactive dashboard for data visualization, designed for clarity and actionable insights.',
         },
       ],
     },
     {
       images: [
         {
-          title: 'Dashboard App',
-          path: '/thumb4.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          title: 'E‑Commerce Store',
+          path: '/thumb2.jpg',
+          url: 'https://yourecommerce.vercel.app/',
+          description: 'Full‑stack online store with secure checkout, product filtering, and responsive design.',
         },
         {
           title: 'Portfolio Website',
           path: '/thumb1.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          url: 'https://yourportfolio.vercel.app/',
+          description: 'Personal showcase site highlighting creative projects and technical expertise.',
         },
         {
-          title: 'E-commerce Store',
-          path: '/thumb2.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          title: 'Dashboard App',
+          path: '/thumb4.jpg',
+          url: 'https://yourdashboard.vercel.app/',
+          description: 'Custom dashboard application for managing workflows and tracking KPIs.',
         },
         {
           title: 'Blog Platform',
           path: '/thumb3.jpg',
-          url: 'https://jirani-rides.vercel.app/',
+          url: 'https://yourblog.vercel.app/',
+          description: 'Content management system with intuitive editor and responsive layouts.',
         },
       ],
     },
@@ -66,12 +74,9 @@ import { Pagination } from 'swiper';
 // icons
 import { BsArrowRight } from 'react-icons/bs';
 
-//next image   
+// next image   
 import Image from 'next/image';
 import Link from 'next/link';
-
-// import data
-// import { workSlides } from './workSlides'; // adjust path if needed
 
 const WorkSlider = () => {
   return (
@@ -94,15 +99,20 @@ const WorkSlider = () => {
                         <Image src={image.path} width={500} height={300} alt={image.title} />
                         {/* overlay gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#00C4B4] to-[#007f77] opacity-0 group-hover:opacity-80 transition-all duration-700"></div>
-                        {/* title */}
-                        <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300">
-                          <div className="flex items-center gap-x-2 text-[13px] tracking-[0.2em] text-white">
-                            <div className="delay-100">{image.title}</div>
-                            <div className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
-                              LIVE
+                        {/* title & description */}
+                        <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300 px-4">
+                          <div className="flex flex-col gap-y-2 text-[13px] tracking-[0.1em] text-white">
+                            <div className="delay-100 font-semibold">{image.title}</div>
+                            <div className="text-xs opacity-0 group-hover:opacity-100 transition-all duration-500 delay-150">
+                              {image.description}
                             </div>
-                            <div className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200">
-                              <BsArrowRight />
+                            <div className="flex items-center gap-x-2 mt-1">
+                              <span className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200">
+                                LIVE
+                              </span>
+                              <span className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-300">
+                                <BsArrowRight />
+                              </span>
                             </div>
                           </div>
                         </div>

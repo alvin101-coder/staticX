@@ -14,7 +14,7 @@ import { fadeIn } from "../variants";
 
 const Home = () => {
   return (
-    <div className="bg-primary/60 h-full">
+    <div className="min-h-screen bg-primary py-32 text-center xl:text-left overflow-y-auto">
       {/* text */}
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
         <div className="text-center flex flex-col justify-center pt-24 md:pt-32 xl:pt-40 xl:text-left h-full container mx-auto px-4">
@@ -26,9 +26,10 @@ const Home = () => {
             exit="hidden"
             className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-4"
           >
-            Code Meets <span className="text-accent">Creativity</span>: <br />
-            Bringing <span className="text-accent">Visions</span> to{" "}
-            <span className="text-accent">Life</span>
+            Where <span className="text-accent">Code</span> Meets{" "}
+            <span className="text-accent">Creativity</span> <br />
+            Turning <span className="text-accent">Ideas</span> into{" "}
+            <span className="text-accent">Impact</span>
           </motion.h1>
 
           {/* subtitle */}
@@ -37,12 +38,22 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="text-sm sm:text-base md:text-lg max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-6 xl:mb-16 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-6 xl:mb-4 leading-relaxed"
           >
-            I merge technical expertise with artistic vision to craft seamless
-            digital experiences. Whether designing sleek interfaces or solving
-            complex coding challenges, my goal is to turn innovation ideas into
-            functional and visually captivating realities.
+            I craft digital experiences that blend design elegance with technical precision. 
+            From sleek interfaces to complex problem‑solving, my work transforms bold concepts 
+            into interactive realities that inspire and engage.
+          </motion.p>
+
+          {/* short subline */}
+          <motion.p
+            variants={fadeIn("down", 0.35)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="text-xs sm:text-sm md:text-base text-accent font-medium tracking-wide mt-2 mb-10 xl:mb-16"
+          >
+            Building the future, one pixel and line of code at a time.
           </motion.p>
 
           {/* btn */}
